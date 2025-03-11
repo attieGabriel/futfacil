@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Quadra</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/scripts.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1><%= quadra.nome %></h1>
+    </header>
+
+    <nav id="sidebar" class="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">×</button>
+        <ul class="nav-menu">
+            <li><a href="/">Home</a></li>
+            <li><a href="/add">Adicionar Quadra</a></li>
+        </ul>
+    </nav>
+
+    <button class="open-btn" onclick="toggleSidebar()">☰ Menu</button>
+
+    <main>
+        <div class="quadra-detalhes">
+            <img src="<%= quadra.imagem %>" alt="<%= quadra.nome %>">
+            <h2><%= quadra.nome %></h2>
+            <p><strong>Descrição:</strong> <%= quadra.descricao %></p>
+            <p><strong>Localização:</strong> <%= quadra.localizacao %></p>
+            <p><strong>Preço por hora:</strong> R$ <%= quadra.preco %></p>
+            <p><strong>Funcionamento:</strong> <%= quadra.funcionamento %></p>
+            <p><strong>Telefone:</strong> <%= quadra.telefone %></p>
+            <a href="#" class="btn">Reservar</a>
+        </div>
+        
+    </main>
+</body>
+</html>

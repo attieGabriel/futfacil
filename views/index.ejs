@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutFacil</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/scripts.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Quadras Disponíveis</h1>
+        <div class="header-buttons">
+            <% if (!isAuthenticated) { %>
+                <a href="/login" class="btn-login">Login</a>
+                <a href="/register" class="btn-register">Registrar</a>
+            <% } else { %>
+                <a href="/logout" class="btn-logout">Logout</a>
+                <a href="/profile" class="btn-profile">
+                    <img src="<%= userImage %>" alt="Profile" class="profile-icon">
+                </a>
+            <% } %>
+        </div>
+    </header>
+
+    <nav id="sidebar" class="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">×</button>
+        <ul class="nav-menu">
+            <li><a href="/">Home</a></li>
+            <% if (isAuthenticated) { %>
+                <li><a href="/add">Adicionar Quadra</a></li>
+            <% } %>
+        </ul>
+    </nav>
+
+    <button class="open-btn" onclick="toggleSidebar()">☰ Menu</button>
+
+    <div class="content-container">
+        <form action="/" method="GET" class="search-form" id="search-form">
+            <input type="text" name="search" placeholder="Pesquisar quadras..." class="search-input">
+            <button type="submit" class="btn-search">Pesquisar</button>
+        </form>
+
+        <main id="main-content">
+            <% quadras.forEach(quadra => { %>
+            <div class="quadra-card">
+                <img src="<%= quadra.imagem %>" alt="<%= quadra.nome %>">
+                <h2><%= quadra.nome %></h2>
+                <p><strong>Descrição:</strong> <%= quadra.descricao %></p>
+                <p><strong>Localização:</strong> <%= quadra.localizacao %></p>
+                <p><strong>Preço por hora:</strong> R$ <%= quadra.preco %></p>
+                <p><strong>Funcionamento:</strong> <%= quadra.funcionamento %></p>
+                <p><strong>Telefone:</strong> <%= quadra.telefone %></p>
+                <a href="/quadra/<%= quadra.id %>" class="btn">Detalhes</a>
+            </div>
+            <% }) %>
+        </main>
+    </div>
+</body>
+</html>
