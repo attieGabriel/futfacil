@@ -31,6 +31,13 @@
             <p><strong>Preço por hora:</strong> R$ <%= quadra.preco %></p>
             <p><strong>Funcionamento:</strong> <%= quadra.funcionamento %></p>
             <p><strong>Telefone:</strong> <%= quadra.telefone %></p>
+            
+            <% if (isAuthenticated) { %>
+                <form action="/quadra/<%= quadra.id %>/delete" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">Deletar Quadra</button>
+                </form>
+            <% } %>
+            
             <a href="#" class="btn">Reservar</a>
         </div>
         

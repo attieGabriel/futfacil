@@ -9,9 +9,19 @@
 </head>
 <body>
     <header>
-        <h1>Adicionar Nova Quadra</h1>
+        <h1>Adicionar Quadras</h1>
+        <div class="header-buttons">
+            <% if (!isAuthenticated) { %>
+                <a href="/login" class="btn-login">Login</a>
+                <a href="/register" class="btn-register">Registrar</a>
+            <% } else { %>
+                <a href="/logout" class="btn-logout">Logout</a>
+                <a href="/profile" class="btn-profile">
+                    <img src="<%= userImage %>" alt="Profile" class="profile-icon">
+                </a>
+            <% } %>
+        </div>
     </header>
-
     <nav id="sidebar" class="sidebar">
         <button class="close-btn" onclick="toggleSidebar()">×</button>
         <ul class="nav-menu">
